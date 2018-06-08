@@ -26,9 +26,31 @@ class Console(Cmd):
     def do_ship(self, args):
         print(self.ship)
 
+
+    def do_m(self, args):
+        self.do_move(args)
+
     def do_move(self, args):
-        coords = args.split(' ')
-        self.ship.move(int(coords[0]), int(coords[1]))
+        d = args[0].lower()
+        if d == 'e' or d == 'east':
+            dx, dy = 1, 0
+        elif d == 'ne' or d == 'northeast':
+            dx, dy = 1, 1
+        elif d == 'n' or d == 'north':
+            dx, dy = 0, 1
+        elif d == 'nw' or d == 'northwest':
+            dx, dy = -1, 1
+        elif d == 'w' or d == 'west':
+            dx, dy = -1, 0
+        elif d == 'sw' or d == 'southwest':
+            dx, dy = -1, -1
+        elif d == 's' or d == 'south':
+            dx, dy = 0, -1
+        elif d == 'se' or d == 'southeast':
+            dx, dy = 1, -1
+
+        self.ship.move(dx, dy)
+        print(f'New Location: ({self.ship.x}, {self.ship.y})')
 
     def do_exit(self, args):
         print("Exit")

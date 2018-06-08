@@ -22,6 +22,6 @@ class Ship():
             self.fuel -= distance
 
     def __str__(self):
-        return f'X:{self.x}\nY:{self.y}\nFuel:{self.fuel}\nFund:{self.fund}\nCargo:{self.cargo}'
+        return f'Location:({self.x}, {self.y})\nFuel:{self.fuel}\nFund:{self.fund}\nCargo:{self.cargo}'
 
 
